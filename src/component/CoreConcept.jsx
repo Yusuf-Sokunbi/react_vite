@@ -1,11 +1,11 @@
 // import { CORE_CONCEPTS } from './data.jsx';
 
-export function  CoreConcept({image, name, priceCents}) {
+export function  CoreConcept({image, title, description}) {
     return (
       <li>
-        <img src={image} alt={name} />
-        <h3>{name}</h3>
-        <p>{priceCents}</p>
+        <img src={image} alt={title} />
+        <h3>{title}</h3>
+        <p>{description}</p>
      </li>
     );
     }

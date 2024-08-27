@@ -3,17 +3,34 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import { Header } from './component/Header/Header.jsx';
 import { CoreConcept } from './component/CoreConcept.jsx';
-import { CORE_CONCEPTS } from './data.jsx';
+import { CORE_CONCEPTS } from './data.js';
 import TabButton from './component/TabButton.jsx';
-const yusuf = "My name is Yusuf Oladipupo  Sokunbi"
+import { EXAMPLES } from './data.js';
+
+const yusuf = "My name is Yusuf Oladipupo  Sokunbi";
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState('Please click a button');
-   let tabContent = "Please click a Button";
-  function HandleSelect(SelectedButton){
-      setSelectedTopic(SelectedButton);
+  const [selectedTopic, setSelectedTopic] = useState();
+  //  let tabContent = "Please click a Button";
+
+  function handleSelect(selectedButton){
+      setSelectedTopic(selectedButton);
     console.log(selectedTopic);
 }
-// console.log('YGFDHJJKHKGHMDFDFHHB UYIO65')
+console.log('APP COMPONENT EXECUTING');
+  let tabContent = <p>Please select a topic.</p>;
+
+  if(selectedTopic) {
+    tabContent = (<div id="tab-content">
+      <h3>{EXAMPLES[selectedTopic].title}</h3>
+      <p>{EXAMPLES[selectedTopic].description}</p>
+      <pre>
+        <code>
+        {EXAMPLES[selectedTopic].code}
+        </code>
+      </pre>
+    </div>);
+  }
+
   return (
     <div>
       <Header />
@@ -46,13 +63,13 @@ function App() {
     <section id="example">
       <h2 id="menu-tab">Example</h2>
       <menu>
-        <TabButton onSelect={() => HandleSelect(yusuf)} label="Component" />
-        <TabButton onSelect={() => HandleSelect('sokunbi')} label="JSX" />
-        <TabButton onSelect={() => HandleSelect('Props')} label="Props" />
-        <TabButton onSelect={() => HandleSelect('State')} label="State" />
+        <TabButton onSelect={() => handleSelect('components')}>Components</TabButton>
+        <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
+        <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
+        <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
       </menu>
+      {tabContent}
     </section>
-      {selectedTopic}
     </main>
     </div>
   )
