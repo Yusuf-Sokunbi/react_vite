@@ -112,6 +112,11 @@ height: 100px;
   font-weight: 400;
   font-style: normal;
 }
+ #example menu button.active{
+  background-color:#7925d3 ;
+  color: #ebe7ef;
+  margin-right: 5px;
+ }
 button {
   border-radius: 8px;
   border: 1px solid transparent;
